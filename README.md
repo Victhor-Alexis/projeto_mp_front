@@ -1,3 +1,7 @@
+
+Link do protótipo com a referência dos componentes das issues: https://www.figma.com/file/eF2n7IgdHWDNyw0bo6kiX7/Untitled?node-id=11%3A273
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
