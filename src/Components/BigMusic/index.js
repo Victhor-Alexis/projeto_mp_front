@@ -1,14 +1,30 @@
 import React from 'react'
 import { Container, TextWrapper, OptionsWrapper, Option } from './styles'
+import { useState, useEffect } from 'react'
+import { api } from '../../services/api'
 
-const BigMusic = () => {
+
+const BigMusic = ({music}) => {
+
+  const [users, setUsers] = useState([])
+
+    const fetchUsers = async () => {
+        const response = await api.get(`/musics/favorited_by/${music.id}`)
+        console.log(response.data)
+        setUsers(response.data)
+    }
+
+    useEffect(() => {
+      fetchUsers()
+    }, [])
+
   return (
     <Container>
       <img alt="foto_do_back" src={"#"} />
       <TextWrapper>
-        <h2>Nome</h2>
-        <h2>Gênero</h2>
-        <p>Descrição, Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <h2>{music.title}</h2>
+        <h2>{music.genre}</h2>
+        <p>{music.description}</p>
       </TextWrapper>
       <OptionsWrapper>
         <Option>
@@ -30,6 +46,14 @@ const BigMusic = () => {
         </Option>
         <Option>
           <h5>Usuários que salvaram</h5>
+          {users.map((user, i) => {
+            return(
+              <div>
+                <p>
+                  {user.name}
+                </p>
+              </div>
+          )})}
         </Option>
       </OptionsWrapper>
     </Container>
