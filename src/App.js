@@ -1,11 +1,14 @@
 import "./global.css"
 import {BrowserRouter} from 'react-router-dom'
 import Routes from "./Routes"
+import { UserProvider } from './Context/userContext';
 
 function App() {
   return (
     <BrowserRouter>
-      <Routes/>
+      <UserProvider>
+        <Routes/>
+      </UserProvider>
     </BrowserRouter>
   );
 }

@@ -24,6 +24,6 @@ export const ButtonsWrapper = styled.div`
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  width: 36rem;
+  width: 56rem;
   justify-content: space-between;
 `;

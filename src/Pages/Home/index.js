@@ -6,12 +6,14 @@ import { ButtonsWrapper, Container, MusicsBox } from './styles'
 import { useHistory } from 'react-router'
 import { useState, useEffect } from 'react'
 import { api } from '../../services/api'
+import { useUserContext } from '../../Context/userContext'
 
 const Home = () => {
   /* Adicionar map com todas as músicas*/
   const history = useHistory()
 
   const [musics, setMusics] = useState([])
+  const { user } = useUserContext();
 
     const fetchMusics = async () => {
         const response = await api.get(`/musics/index`)
@@ -22,8 +24,6 @@ const Home = () => {
     useEffect(() => {
       fetchMusics()
     }, [])
-
-
 
   return (
     <Container>
@@ -39,8 +39,9 @@ const Home = () => {
         
       </MusicsBox>
       <ButtonsWrapper>
-        <Button>Recomendar</Button>
-        <Button onClick={()=>history.push("/favorites")} >Favoritos</Button>
+        <Button>Recomendar por gênero</Button>
+        <Button>Recomendar por interesse</Button>
+        { user &&  <Button onClick={()=>history.push("/favorites")} >Favoritos</Button> }
       </ButtonsWrapper>
     </Container>
   )
