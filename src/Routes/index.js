@@ -5,6 +5,8 @@ import Favorites from '../Pages/Favorites'
 import Home from '../Pages/Home'
 import Login from '../Pages/Login'
 import MusicPage from '../Pages/MusicPage'
+import Recomendation from '../Pages/Recomendation'
+import Recomendation_fav from '../Pages/Recomendation _fav'
 
 const Routes = () => {
   const { user } = useUserContext();
@@ -15,8 +17,10 @@ const Routes = () => {
       <Route exact path="/home" component={Home}/>
       <Route exact path="/favorites" component={Favorites}/>
       <Route exact path="/music/:id" component={MusicPage}/>
+      <Route exact path="/recommend" component={Recomendation}/>
+      <Route exact path="/recommend_fav" component={Recomendation_fav}/>
       {
-        user ? <Route path="*" component={Login}/> : <Route path="*" component={Home}/>
+        user ? <Route path="*" component={Home}/> : <Route path="*" component={Login}/>
       }
     </Switch>
   )

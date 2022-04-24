@@ -8,11 +8,13 @@ import { useState } from "react"
 import { useEffect } from "react/cjs/react.development"
 import { api } from "../../services/api"
 import { useParams } from "react-router"
+import { useUserContext } from '../../Context/userContext'
 
 const MusicPage = () => {
   const history = useHistory();
 
   let { id } = useParams()
+  const { user } = useUserContext();
     
   const [music, setMusic] = useState({})
 
@@ -21,7 +23,6 @@ const MusicPage = () => {
       console.log(response.data)
       setMusic(response.data)
   }
-    
 
   useEffect(() => {
       fetchMusic()
@@ -32,8 +33,11 @@ const MusicPage = () => {
       <Header/>
       <BigMusic music={music}/>
       <ButtonsWrapper>
-        <Button>Recomendar</Button>
-        <Button onClick={()=>history.push("/favorites")} >Favoritos</Button>
+        <Button onClick={()=> {history.push("/recommend"); }}>Recomendar por gênero</Button>
+        <Button onClick={()=>history.push("/recommend_fav")}>Recomendar por interesse</Button>
+        { 
+          user && <Button onClick={()=>history.push("/favorites")} >Favoritos</Button>
+        }
       </ButtonsWrapper>
     </Container>
   )

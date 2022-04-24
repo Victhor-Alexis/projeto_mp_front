@@ -3,11 +3,6 @@ import styled from 'styled-components'
 export const Container = styled.div`
   width: 100%;
   height: 100%;
-  
-  h3 {
-    text-align: center;
-    margin-top: 1.5rem;
-  }
 `;
 
 export const MusicsBox = styled.div`
@@ -15,7 +10,7 @@ export const MusicsBox = styled.div`
   width: 85%;
   overflow-y: scroll;
   position: absolute;
-  top: 48%;
+  top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
   display: flex;
@@ -29,6 +24,6 @@ export const ButtonsWrapper = styled.div`
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  width: 36rem;
+  width: 56rem;
   justify-content: space-between;
 `;

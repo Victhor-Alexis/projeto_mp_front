@@ -39,8 +39,8 @@ const Home = () => {
         
       </MusicsBox>
       <ButtonsWrapper>
-        <Button>Recomendar por gênero</Button>
-        <Button>Recomendar por interesse</Button>
+        <Button onClick={()=> {history.push("/recommend"); }}>Recomendar por gênero</Button>
+        <Button onClick={()=>history.push("/recommend_fav")}>Recomendar por interesse</Button>
         { user &&  <Button onClick={()=>history.push("/favorites")} >Favoritos</Button> }
       </ButtonsWrapper>
     </Container>
