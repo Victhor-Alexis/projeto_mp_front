@@ -1,20 +1,17 @@
 import React from 'react'
 import { Container, TextWrapper, OptionsWrapper, Option } from './styles'
-import { useState, useEffect } from 'react'
 import { api } from '../../services/api'
 import { useUserContext } from '../../Context/userContext'
+import { useHistory } from 'react-router'
+
 
 
 const BigMusic = ({ music }) => {
 
-  const [users, setUsers] = useState([])
-  const { user } = useUserContext()
+  const history = useHistory()
 
-  const fetchUsers = async () => {
-    const response = await api.get(`/musics/favorited_by/${music.id}`)
-    console.log(response.data)
-    setUsers(response.data)
-  }
+
+  const { user } = useUserContext()
 
   const saveFavorite = async () => {
     const response = await api.post(`/favorites/create`, {
@@ -26,10 +23,6 @@ const BigMusic = ({ music }) => {
     if(response)
       alert("Música salva nos favoritos")
   }
-
-  useEffect(() => {
-    fetchUsers()
-  }, [])
 
   return (
     <Container>
@@ -58,16 +51,7 @@ const BigMusic = ({ music }) => {
           </svg>
         </Option>
         <Option>
-          <h5>Usuários que salvaram</h5>
-          {users.map((user, i) => {
-            return (
-              <div>
-                <p>
-                  {user.name}
-                </p>
-              </div>
-            )
-          })}
+          <h5 onClick={()=>history.push(`/liked_by/${music.id}`)} >Usuários que salvaram</h5>
         </Option>
       </OptionsWrapper>
     </Container>
