@@ -29,7 +29,7 @@ const Favorites = () => {
       <MusicsBox>
         {
           user && favorites.map((element, i) => {
-            if (element.user_id === user.id) {
+            if (element.user_id === user.id && element.value === 1) {
               return (
                 <Music key={element.music.id} music={element.music} onClick={()=>history.push(`/music/${element.music.id}`)}/>
               )

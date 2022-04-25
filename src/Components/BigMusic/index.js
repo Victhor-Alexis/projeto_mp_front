@@ -26,7 +26,7 @@ const BigMusic = ({ music }) => {
 
   return (
     <Container>
-      <img alt="foto_do_back" src={"#"} />
+      <img alt="foto_do_back" src={`http://localhost:3000${music.photo_url}`} />
       <TextWrapper>
         <h2>{music.title}</h2>
         <h2>{music.genre}</h2>
